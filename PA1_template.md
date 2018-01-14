@@ -34,6 +34,7 @@ library(lubridate)
 data$date <- ymd(data$date)
 ```
 
+
 #What is the mean total number of steps taken per day?
 
 
@@ -122,6 +123,7 @@ plot(datainterval, type = "l", col = "green")
 ![](PA1_template_files/figure-html/timeseriesplot-1.png)<!-- -->
 
 ##The 5-minute interval that, on average, contains the maximum number of steps
+
 Interval number 835 contains 206 steps (on average).
 
 ```r
@@ -147,6 +149,7 @@ table(complete.cases(data))
 ## FALSE  TRUE 
 ##  2304 15264
 ```
+
 ##Code to describe and show a strategy for imputing missing data
 
 
@@ -158,6 +161,7 @@ dataNew <- mutate(dataNew, imputedsteps =
 dataNew <- dataNew[, c(5,3,1)]
 names(dataNew) <- c("steps", "date", "interval")
 ```
+
 ##Histogram of the total number of steps taken each day after missing values are imputed
 
 
@@ -185,6 +189,7 @@ median <- round(median(datadays$steps), digits = 0)
 The new mean is 10766 and the new median is 10766. Both are now the same as the mean that ignored the missing values. The influence is very small: only 1 step... 
 
 ##Are there any differences in activity patterns between weekdays and weekends?
+
 Panel plot comparing the average number of steps taken per 5 minute interval across weekdays and weekends
 
 

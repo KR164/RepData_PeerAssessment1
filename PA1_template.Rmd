@@ -2,7 +2,9 @@
 title: "Reproducible Research - Course Project 1"
 author: "Karen Reijneveld"
 date: "14 januari 2018"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 # Loading and preprocessing the data
 Download, unzip and read the data:
@@ -16,6 +18,7 @@ data <- read.csv("activity.csv", skipNul = T, row.names=NULL)
 library(lubridate)
 data$date <- ymd(data$date)
 ```
+
 
 #What is the mean total number of steps taken per day?
 
@@ -70,6 +73,7 @@ plot(datainterval, type = "l", col = "green")
 ```
 
 ##The 5-minute interval that, on average, contains the maximum number of steps
+
 Interval number 835 contains 206 steps (on average).
 ```{r}
 print(subset(datainterval, steps == max(steps)))
@@ -80,6 +84,7 @@ The total number of rows with NAs is 2304.
 ```{r}
 table(complete.cases(data))
 ```
+
 ##Code to describe and show a strategy for imputing missing data
 
 ```{r}
@@ -90,6 +95,7 @@ dataNew <- mutate(dataNew, imputedsteps =
 dataNew <- dataNew[, c(5,3,1)]
 names(dataNew) <- c("steps", "date", "interval")
 ```
+
 ##Histogram of the total number of steps taken each day after missing values are imputed
 
 ```{r histogram2}
@@ -110,6 +116,7 @@ hist(datadays$steps, main = "Total number of steps (imputed) taken each day",
 The new mean is `r mean` and the new median is `r median`. Both are now the same as the mean that ignored the missing values. The influence is very small: only 1 step... 
 
 ##Are there any differences in activity patterns between weekdays and weekends?
+
 Panel plot comparing the average number of steps taken per 5 minute interval across weekdays and weekends
 
 ```{r panelplot}
